@@ -17,7 +17,15 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const handleNavClick = () => setIsOpen(false);
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md border-b border-clay-100">
@@ -25,7 +33,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="flex items-center gap-3 group">
+            <a 
+              href="#home" 
+              onClick={(e) => handleScroll(e, '#home')}
+              className="flex items-center gap-3 group"
+            >
               <div className="w-14 h-14 text-clay-700 transition-transform transform group-hover:scale-110 duration-300">
                 <Logo />
               </div>
@@ -42,6 +54,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
                 className={`text-sm font-medium transition-colors duration-200 border-b-2 ${
                   activeSection === link.href.substring(1)
                     ? 'text-clay-700 border-clay-600'
@@ -64,7 +77,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             </a>
             <a 
               href="#menu"
-              className="bg-clay-700 hover:bg-clay-800 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-clay-200 flex items-center gap-2 transition-transform transform hover:scale-105"
+              onClick={(e) => handleScroll(e, '#menu')}
+              className="bg-clay-700 hover:bg-clay-800 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-clay-200 flex items-center gap-2 transition-transform transform hover:scale-105 cursor-pointer"
             >
               <ShoppingBag size={18} />
               Order Online
@@ -91,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={handleNavClick}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="block px-3 py-4 text-base font-medium text-stone-700 hover:text-clay-700 hover:bg-clay-50 rounded-md"
               >
                 {link.name}
@@ -106,7 +120,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               </a>
               <a 
                 href="#menu"
-                onClick={handleNavClick}
+                onClick={(e) => handleScroll(e, '#menu')}
                 className="w-full flex justify-center items-center gap-2 bg-clay-700 text-white px-4 py-3 rounded-lg font-bold"
               >
                 <ShoppingBag size={18} /> Order Online

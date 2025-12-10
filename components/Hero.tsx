@@ -2,6 +2,15 @@ import React from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative bg-[#2E1A16] text-white overflow-hidden min-h-[650px] flex items-center justify-center">
       
@@ -33,13 +42,17 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         
-        {/* Rating Pill */}
-        <div className="animate-fade-in-up mb-8">
-          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#1a0f0a]/60 border border-orange-500/30 shadow-[0_0_20px_rgba(249,115,22,0.15)] backdrop-blur-sm">
+        {/* Rating Pill - Clickable */}
+        <a 
+          href="#reviews" 
+          onClick={(e) => handleScroll(e, '#reviews')}
+          className="animate-fade-in-up mb-8 group hover:scale-105 transition-transform duration-300 cursor-pointer block"
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#1a0f0a]/60 border border-orange-500/30 shadow-[0_0_20px_rgba(249,115,22,0.15)] backdrop-blur-sm group-hover:bg-[#1a0f0a]/80 transition-colors">
             <Star size={16} className="fill-orange-500 text-orange-500" />
             <span className="text-orange-50 font-medium tracking-wide text-sm">4.3 Rating on Google (2,074 Reviews)</span>
           </div>
-        </div>
+        </a>
 
         {/* Main Heading */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight text-white leading-[1.1] mb-6 drop-shadow-2xl">
@@ -58,12 +71,14 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
           <a 
             href="#menu"
+            onClick={(e) => handleScroll(e, '#menu')}
             className="px-10 py-4 bg-gradient-to-b from-[#EA580C] to-[#C2410C] text-white rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-[0_4px_0_rgb(154,52,18)] active:shadow-none active:translate-y-1 hover:brightness-110"
           >
             View Menu <ArrowRight size={20} />
           </a>
           <a 
             href="#contact"
+            onClick={(e) => handleScroll(e, '#contact')}
             className="px-10 py-4 bg-transparent border-2 border-stone-600 hover:border-white text-stone-300 hover:text-white rounded-lg font-bold text-lg transition-all flex items-center justify-center hover:bg-white/5"
           >
             Reserve a Table

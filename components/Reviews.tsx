@@ -23,7 +23,7 @@ const Reviews: React.FC = () => {
             </div>
           </div>
           <a 
-            href="https://www.google.com/search?q=Meen+Satti+Seafood+Restaurant+Ekkatuthangal+reviews"
+            href="https://www.google.com/maps/search/?api=1&query=Meen+Satti+Seafood+Restaurant+Ekkatuthangal"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 md:mt-0 px-6 py-2 border border-stone-300 rounded-full text-sm font-semibold hover:bg-white hover:border-clay-500 transition-colors inline-block"

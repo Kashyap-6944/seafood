@@ -53,8 +53,14 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-stone-900 text-lg">Contact</h3>
-                  <p className="text-stone-600 mt-1">General: 093429 51596</p>
-                  <p className="text-stone-600">Delivery: 809129 1280</p>
+                  <div className="flex flex-col mt-1 gap-1">
+                    <a href="tel:09342951596" className="text-stone-600 hover:text-clay-700 transition-colors font-medium">
+                      General: <span className="underline decoration-stone-300 hover:decoration-clay-500">093429 51596</span>
+                    </a>
+                    <a href="tel:8091291280" className="text-stone-600 hover:text-clay-700 transition-colors font-medium">
+                      Delivery: <span className="underline decoration-stone-300 hover:decoration-clay-500">809129 1280</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,8 +84,9 @@ const Contact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/20"
+              aria-label="View on Google Maps"
             >
-               <span className="bg-white text-stone-900 px-4 py-2 rounded-full font-bold shadow-lg">View on Google Maps</span>
+               <span className="bg-white text-stone-900 px-4 py-2 rounded-full font-bold shadow-lg transform hover:scale-105 transition-transform">View on Google Maps</span>
             </a>
           </div>
 
